@@ -1,7 +1,4 @@
-import db from './firebase';
-
-import React, { useState, useEffect } from 'react';
-// import React, { useState, useEffect } from "react";
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
@@ -10,48 +7,18 @@ import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
 import { Overview, Calendar, Doctors, Stacked, Students, Kanban, Line, Area } from './pages';
 import './App.css';
 
-
 import { useStateContext } from './contexts/ContextProvider';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
-  const [usersData, setUsersData] = useState([]);
-  
+
   useEffect(() => {
-    document.title = 'COCO';
     const currentThemeColor = localStorage.getItem('colorMode');
     const currentThemeMode = localStorage.getItem('themeMode');
     if (currentThemeColor && currentThemeMode) {
       setCurrentColor(currentThemeColor);
       setCurrentMode(currentThemeMode);
     }
-  }, []);
-useEffect(()=>{
-console.log(usersData)
-},[usersData])
-  // useEffect(() => {
-  //   db.collection("customersData").onSnapshot((snapshot) => {
-  //     setCustomersData(
-  //       snapshot.docs.map((doc) => ({
-  //         id: doc.id,
-  //         data: doc.data(),
-  //       }))
-  //     );
-  //   });
-  //   console.log({ customersData });
-  // }, []);
-  useEffect(() => {
-    db.collection("users")
-    .onSnapshot((snapshot) => {
-      console.log(snapshot.docs)
-      setUsersData(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
-      );
-    });
-    console.log(usersData );
   }, []);
 
   return (
@@ -98,10 +65,10 @@ console.log(usersData)
 
               <Routes>
                 {/* dashboard  */}
+                <Route path="/" element={(<Overview />)} />
                 <Route path="/overview" element={(<Overview />)} />
 
                 {/* pages  */}
-                <Route path="/" element={<Students />} />
                 <Route path="/doctors" element={<Doctors />} />
                 <Route path="/students" element={<Students />} />
 

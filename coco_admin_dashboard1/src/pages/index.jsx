@@ -6,5 +6,3 @@ export { default as Calendar } from './Calendar';
 export { default as Area } from './Charts/Area';
 export { default as Line } from './Charts/Line';
 export { default as Stacked } from './Charts/Stacked';
-
-export { default as Analysis } from './Charts/Analysis';

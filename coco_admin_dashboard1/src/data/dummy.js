@@ -12,40 +12,17 @@ import avatar from './avatar.jpg';
 import avatar2 from './avatar2.jpg';
 import avatar3 from './avatar3.png';
 import avatar4 from './avatar4.jpg';
-import { NavLink } from 'react-router-dom';
-
-const Dummy = () => {
-  // const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
-  const [usersData, setUsersData] = useState([]);
-
-  useEffect(() => {
-    console.log(usersData)
-  }, [usersData])
-  useEffect(() => {
-    db.collection("users")
-      .onSnapshot((snapshot) => {
-        console.log(snapshot.docs)
-        setUsersData(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            data: doc.data(),
-          }))
-        );
-      });
-    console.log(usersData);
-  }, []);
-}
 
 export const links = [
-  // {
-  //   title: 'Dashboard',
-  //   links: [
-  //     {
-  //       name: 'overview',
-  //       icon: <FiShoppingBag />,
-  //     },
-  //   ],
-  // },
+  {
+    title: 'Dashboard',
+    links: [
+      {
+        name: 'overview',
+        icon: <FiShoppingBag />,
+      },
+    ],
+  },
 
   {
     title: 'Pages',
@@ -60,129 +37,43 @@ export const links = [
       },
     ],
   },
-  // {
-  //   title: 'Apps',
-  //   links: [
-  //     {
-  //       name: 'calendar',
-  //       icon: <AiOutlineCalendar />,
-  //     },
-  //     {
-  //       name: 'kanban',
-  //       icon: <BsKanban />,
-  //     },
-  //   ],
-  // },
-  // {
-  //   title: 'Charts',
-  //   links: [
-  //     /*{
-  //       name: 'line',
-  //       icon: <AiOutlineStock />,
-  //     },
-  //     {
-  //       name: 'area',
-  //       icon: <AiOutlineAreaChart />,
-  //     },
-  //     {
-  //       name: 'bar',
-  //       icon: <AiOutlineBarChart />,
-  //     },*/
-  //     {
-  //       name: 'stacked',
-  //       icon: <AiOutlineBarChart />,
-  //     },
-  //     {
-  //       name: 'analysis',
-  //       icon: <AiOutlineBarChart />,
-  //     },
-  //     {
-  //       name: 'summary',
-  //       icon: <AiOutlineBarChart />,
-  //     },
-  //   ],
-  // },
-];
-
-export const barChartData = [
-  [
-    { x: 'USA', y: 46 },
-    { x: 'GBR', y: 27 },
-    { x: 'CHN', y: 26 },
-  ],
-  [
-    { x: 'USA', y: 37 },
-    { x: 'GBR', y: 23 },
-    { x: 'CHN', y: 18 },
-  ],
-  [
-    { x: 'USA', y: 38 },
-    { x: 'GBR', y: 17 },
-    { x: 'CHN', y: 26 },
-  ],
-];
-
-export const barCustomSeries = [
   {
-    dataSource: barChartData[0],
-    xName: 'x',
-    yName: 'y',
-    name: 'Gold',
-    type: 'Column',
-    marker: {
-      dataLabel: {
-        visible: true,
-        position: 'Top',
-        font: { fontWeight: '600', color: '#ffffff' },
+    title: 'Apps',
+    links: [
+      {
+        name: 'calendar',
+        icon: <AiOutlineCalendar />,
       },
-    },
+      {
+        name: 'kanban',
+        icon: <BsKanban />,
+      },
+    ],
   },
   {
-    dataSource: barChartData[1],
-    xName: 'x',
-    yName: 'y',
-    name: 'Silver',
-    type: 'Column',
-    marker: {
-      dataLabel: {
-        visible: true,
-        position: 'Top',
-        font: { fontWeight: '600', color: '#ffffff' },
+    title: 'Charts',
+    links: [
+      {
+        name: 'line',
+        icon: <AiOutlineStock />,
       },
-    },
-  },
-  {
-    dataSource: barChartData[2],
-    xName: 'x',
-    yName: 'y',
-    name: 'Bronze',
-    type: 'Column',
-    marker: {
-      dataLabel: {
-        visible: true,
-        position: 'Top',
-        font: { fontWeight: '600', color: '#ffffff' },
+      {
+        name: 'area',
+        icon: <AiOutlineAreaChart />,
       },
-    },
+      {
+        name: 'stacked',
+        icon: <AiOutlineBarChart />,
+      },
+    ],
   },
 ];
-export const barPrimaryXAxis = {
-  valueType: 'Category',
-  interval: 1,
-  majorGridLines: { width: 0 },
-};
-export const barPrimaryYAxis = {
-  majorGridLines: { width: 0 },
-  majorTickLines: { width: 0 },
-  lineStyle: { width: 0 },
-  labelStyle: { color: 'transparent' },
-};
 
 export const activityData = [
   {
     icon: <MdOutlineSupervisorAccount />,
     percentage: '75%',
-    title: 'Attention-deficit/hyperactivity disorder',
+    title: 'Attendance',
     iconColor: '#03C9D7',
     iconBg: '#E5FAFB',
     pcColor: 'red-600',
@@ -190,7 +81,7 @@ export const activityData = [
   {
     icon: <BsBoxSeam />,
     percentage: '50%',
-    title: 'Anxiety',
+    title: 'Work',
     iconColor: 'rgb(255, 244, 229)',
     iconBg: 'rgb(254, 201, 15)',
     pcColor: 'green-600',
@@ -198,24 +89,17 @@ export const activityData = [
   {
     icon: <FiBarChart />,
     percentage: '25%',
-    title: 'Depression',
+    title: 'Activity',
     iconColor: 'rgb(228, 106, 118)',
     iconBg: 'rgb(255, 244, 229)',
+
     pcColor: 'green-600',
   },
   {
     icon: <HiOutlineRefresh />,
     percentage: '75%',
-    title: 'Self-Esteem',
+    title: 'Behaviour',
     iconColor: 'rgb(0, 194, 146)',
-    iconBg: 'rgb(235, 250, 242)',
-    pcColor: 'red-600',
-  },
-  {
-    icon: <FiBarChart />,
-    percentage: '55%',
-    title: 'Suicidal',
-    iconColor: 'rgb(0, 0, 255)',
     iconBg: 'rgb(235, 250, 242)',
     pcColor: 'red-600',
   },
@@ -418,85 +302,65 @@ const studentGridImage = (props) => (
       alt="student"
     />
     <div>
-      <NavLink to="/overview"><p>{props.StudentName}</p></NavLink>
+      <p>{props.StudentName}</p>
     </div>
   </div>
 );
 
 export const studentsGrid = [
-  // { type: 'checkbox', width: '50' },
-  {
-    field: 'StudentName',
-    headerText: 'Name',
+  { type: 'checkbox', width: '50' },
+  { headerText: 'Name',
     width: '150',
     template: studentGridImage,
-    textAlign: 'Center'
-  },
-  {
-    field: 'StudentID',
+    textAlign: 'Center' },
+  { field: 'EmailID',
+    headerText: 'Email ID',
+    width: '150',
+    textAlign: 'Center' },
+  { field: 'Date',
+    headerText: 'Date',
+    width: '130',
+    format: 'yMd',
+    textAlign: 'Center' },
+  { field: 'Therapist',
+    headerText: 'Therapist',
+    width: '100',
+    format: 'C2',
+    textAlign: 'Center' },
+  { field: 'StudentID',
     headerText: 'Student ID',
     width: '120',
     textAlign: 'Center',
     isPrimaryKey: true,
   },
-  {
-    field: 'RollNo',
-    headerText: 'Roll No',
-    width: '150',
-    textAlign: 'Center'
-  },
-  {
-    field: 'Class',
-    headerText: 'Class',
-    width: '150',
-    textAlign: 'Center'
-  },
-  {
-    field: 'School',
-    headerText: 'School',
-    width: '150',
-    textAlign: 'Center'
-  },
-  {
-    field: 'DateRegistered',
-    headerText: 'Date Registered',
-    width: '130',
-    format: 'yMd',
-    textAlign: 'Center'
-  },
 
 ];
 
 export const doctorsGrid = [
-  {
-    headerText: 'Doctor',
+  { headerText: 'Doctor',
     width: '150',
     template: gridDoctorProfile,
-    textAlign: 'Center'
+    textAlign: 'Center' 
   },
-  {
-    field: 'EmailID',
+  { field: 'EmailID',
     headerText: 'Email ID',
     width: '120',
-    textAlign: 'Center'
+    textAlign: 'Center' 
   },
-  {
-    headerText: 'Country',
-    width: '120',
-    textAlign: 'Center',
-    template: gridDoctorCountry
+  { headerText: 'Country',
+  width: '120',
+  textAlign: 'Center',
+  template: gridDoctorCountry 
   },
-  {
-    field: 'ContactNumber',
+  { field: 'ContactNumber',
     headerText: 'Contact Number',
     width: '120',
-    textAlign: 'Center'
+    textAlign: 'Center' 
   },
-  {
-    field: 'DoctorID',
+  { field: 'DoctorID',
     headerText: 'Doctor ID',
     width: '125',
-    textAlign: 'Center'
+    textAlign: 'Center' 
   },
 ];
 
@@ -504,512 +368,501 @@ export const studentsData = [
   {
     StudentID: 1001,
     StudentName: 'Jaysel Silveira',
-    RollNo: 'jaysel@gmail.com',
-    Class: 'sa',
-    School:'sas' ,
-    DateRegistered: '10/15/2020',
-    URL: '/overview'
+    StudentImage:
+      avatar2,
+    EmailID: 'jaysel@gmail.com',
+    Date: '10/15/2020',
+    Therapist: 'Dr. Esther Howard',
   },
+  {
+    StudentID: 1002,
+    StudentName: 'Druvi Tendulkar',
+    StudentImage:
+      avatar2,
+    EmailID: 'druvi@gmail.com',
+    Date: '10/10/2020',
+    Therapist: 'Dr. Jacob Jones',
+  },
+  {
+    StudentID: 1003,
+    StudentName: 'Carson Rodrigues',
+    StudentImage:
+      avatar,
+    EmailID: 'carson@gmail.com',
+    Date: '10/12/2020',
+    Therapist: 'Dr. Theresa Webb',
+  },
+  {
+    StudentID: 1004,
+    StudentName: 'Oysturn Vas',
+    StudentImage:
+      avatar3,
+    EmailID: 'oysturn@gmail.com',
+    Date: '10/14/2020',
+    Therapist: 'Dr. Arlene McCoy',
+  },
+  {
+    StudentID: 1005,
+    StudentName: 'Yash Karapurkar',
+    StudentImage:
+      avatar4,
+    EmailID: 'yash@gmail.com',
+    Date: '10/17/2020',
+    Therapist: 'Dr. Jacob Jones',
+  },
+  {
+    StudentID: 1006,
+    StudentName: 'Rea DSouza',
+    StudentImage:
+      avatar2,
+    EmailID: 'rea@gmail.com',
+    Date: '10/13/2020',
+    Therapist: 'Dr. Esther Howard',
+  },
+  {
+    StudentID: 1007,
+    StudentName: 'Ritika Ghanti',
+    StudentImage:
+      avatar2,
+    EmailID: 'ritika@gmail.com',
+    Date: '10/17/2020',
+    Therapist: 'Dr. Arlene McCoy',
+  },
+  {
+    StudentID: 1008,
+    StudentName: 'Roshni Kholkar',
+    StudentImage:
+      avatar2,
+    EmailID: 'roshni@gmail.com',
+    Date: '10/19/2020',
+    Therapist: 'Dr. Theresa Webb',
+  },
+  {
+    StudentID: 1009,
+    StudentName: 'Saish Pawar',
+    StudentImage:
+      avatar,
+    EmailID: 'saish@gmail.com',
+    Date: '10/20/2020',
+    Therapist: 'Dr. Arlene McCoy',
+  },
+  {
+    StudentID: 1010,
+    StudentName: 'Clive Rodrigues',
+    StudentImage:
+      avatar4,
+    EmailID: 'clive@gmail.com',
+    Date: '10/18/2020',
+    Therapist: 'Dr. Esther Howard',
+  },
+  {
+    StudentID: 1011,
+    StudentName: 'Tessa Thompson',
+    StudentImage:
+      avatar2,
+    EmailID: 'tessa@gmail.com',
+    Date: '10/20/2020',
+    Therapist: 'Dr. Jacob Jones',
+  },
+  {
+    StudentID: 1012,
+    StudentName: 'Jack Sparrow',
+    StudentImage:
+      avatar3,
+    EmailID: 'jack@gmail.com',
+    Date: '10/19/2020',
+    Therapist: 'Dr. Theresa Webb',
+  },
+  {
+    CustomerID: 1013,
 
-  
-//   {customersData?.map(({ id, data }) => (
-//     <tr key={id}>
-//       <td>{data.name}</td>
-//       <td>{data.password}</td>
-//     </tr>
-//   ))}
-// </table> */}
+    CustomerName: 'Andrew McDownland',
+    CustomerEmail: 'andrew@gmail.com',
+    ProjectName: 'Real Homes WP Theme',
+    Status: 'Pending',
+    CustomerImage:
+      avatar4,
+    StatusBg: '#FEC90F',
+    Weeks: '19',
+    Budget: '$24.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1014,
 
+    CustomerName: 'Christopher Jamil',
+    CustomerEmail: 'jamil@gmail.com',
+    ProjectName: 'MedicalPro WP Theme',
+    Status: 'Completed',
+    CustomerImage:
+      avatar,
+    StatusBg: '#8BE78B',
+    Weeks: '34',
+    Budget: '$16.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1015,
 
-  // {
-  //   StudentID: 1002,
-  //   StudentName: 'Druvi Tendulkar',
-  //   StudentImage:
-  //     avatar2,
-  //   EmailID: 'druvi@gmail.com',
-  //   Date: '10/10/2020',
-  //   Counsellor: 'Dr. Jacob Jones',
-  // },
-  // {
-  //   StudentID: 1003,
-  //   StudentName: 'Carson Rodrigues',
-  //   StudentImage:
-  //     avatar,
-  //   EmailID: 'carson@gmail.com',
-  //   Date: '10/12/2020',
-  //   Counsellor: 'Dr. Theresa Webb',
-  // },
-  // {
-  //   StudentID: 1004,
-  //   StudentName: 'Oysturn Vas',
-  //   StudentImage:
-  //     avatar3,
-  //   EmailID: 'oysturn@gmail.com',
-  //   Date: '10/14/2020',
-  //   Counsellor: 'Dr. Arlene McCoy',
-  // },
-  // {
-  //   StudentID: 1005,
-  //   StudentName: 'Yash Karapurkar',
-  //   StudentImage:
-  //     avatar4,
-  //   EmailID: 'yash@gmail.com',
-  //   Date: '10/17/2020',
-  //   Counsellor: 'Dr. Jacob Jones',
-  // },
-  // {
-  //   StudentID: 1006,
-  //   StudentName: 'Rea DSouza',
-  //   StudentImage:
-  //     avatar2,
-  //   EmailID: 'rea@gmail.com',
-  //   Date: '10/13/2020',
-  //   Counsellor: 'Dr. Esther Howard',
-  // },
-  // {
-  //   StudentID: 1007,
-  //   StudentName: 'Ritika Ghanti',
-  //   StudentImage:
-  //     avatar2,
-  //   EmailID: 'ritika@gmail.com',
-  //   Date: '10/17/2020',
-  //   Counsellor: 'Dr. Arlene McCoy',
-  // },
-  // {
-  //   StudentID: 1008,
-  //   StudentName: 'Roshni Kholkar',
-  //   StudentImage:
-  //     avatar2,
-  //   EmailID: 'roshni@gmail.com',
-  //   Date: '10/19/2020',
-  //   Counsellor: 'Dr. Theresa Webb',
-  // },
-  // {
-  //   StudentID: 1009,
-  //   StudentName: 'Saish Pawar',
-  //   StudentImage:
-  //     avatar,
-  //   EmailID: 'saish@gmail.com',
-  //   Date: '10/20/2020',
-  //   Counsellor: 'Dr. Arlene McCoy',
-  // },
-  // {
-  //   StudentID: 1010,
-  //   StudentName: 'Clive Rodrigues',
-  //   StudentImage:
-  //     avatar4,
-  //   EmailID: 'clive@gmail.com',
-  //   Date: '10/18/2020',
-  //   Counsellor: 'Dr. Esther Howard',
-  // },
-  // {
-  //   StudentID: 1011,
-  //   StudentName: 'Tessa Thompson',
-  //   StudentImage:
-  //     avatar2,
-  //   EmailID: 'tessa@gmail.com',
-  //   Date: '10/20/2020',
-  //   Counsellor: 'Dr. Jacob Jones',
-  // },
-  // {
-  //   StudentID: 1012,
-  //   StudentName: 'Jack Sparrow',
-  //   StudentImage:
-  //     avatar3,
-  //   EmailID: 'jack@gmail.com',
-  //   Date: '10/19/2020',
-  //   Counsellor: 'Dr. Theresa Webb',
-  // },
-  // {
-  //   CustomerID: 1013,
+    CustomerName: 'Michael',
+    CustomerEmail: 'michael@gmail.com',
+    ProjectName: 'Weekly WP Theme',
+    Status: 'Cancel',
+    CustomerImage:
+      avatar2,
+    StatusBg: 'red',
+    Weeks: '34',
+    Budget: '$16.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1016,
+    CustomerName: 'Nirav Joshi',
+    CustomerEmail: 'nirav@gmail.com',
+    CustomerImage:
+      avatar2,
+    ProjectName: 'Hosting Press HTML',
+    Status: 'Active',
+    StatusBg: '#8BE78B',
+    Weeks: '40',
+    Budget: '$2.4k',
+    Location: 'India',
+  },
+  {
+    CustomerID: 1017,
 
-  //   CustomerName: 'Andrew McDownland',
-  //   CustomerEmail: 'andrew@gmail.com',
-  //   ProjectName: 'Real Homes WP Theme',
-  //   Status: 'Pending',
-  //   CustomerImage:
-  //     avatar4,
-  //   StatusBg: '#FEC90F',
-  //   Weeks: '19',
-  //   Budget: '$24.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1014,
+    CustomerName: 'Sunil Joshi',
+    CustomerEmail: 'sunil@gmail.com',
+    ProjectName: 'Elite Admin',
+    Status: 'Active',
+    CustomerImage:
+      avatar3,
 
-  //   CustomerName: 'Christopher Jamil',
-  //   CustomerEmail: 'jamil@gmail.com',
-  //   ProjectName: 'MedicalPro WP Theme',
-  //   Status: 'Completed',
-  //   CustomerImage:
-  //     avatar,
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '34',
-  //   Budget: '$16.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1015,
+    StatusBg: '#8BE78B',
+    Weeks: '11',
+    Budget: '$3.9k',
+    Location: 'India',
+  },
+  {
+    CustomerID: 1018,
 
-  //   CustomerName: 'Michael',
-  //   CustomerEmail: 'michael@gmail.com',
-  //   ProjectName: 'Weekly WP Theme',
-  //   Status: 'Cancel',
-  //   CustomerImage:
-  //     avatar2,
-  //   StatusBg: 'red',
-  //   Weeks: '34',
-  //   Budget: '$16.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1016,
-  //   CustomerName: 'Nirav Joshi',
-  //   CustomerEmail: 'nirav@gmail.com',
-  //   CustomerImage:
-  //     avatar2,
-  //   ProjectName: 'Hosting Press HTML',
-  //   Status: 'Active',
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '40',
-  //   Budget: '$2.4k',
-  //   Location: 'India',
-  // },
-  // {
-  //   CustomerID: 1017,
+    CustomerName: 'Andrew McDownland',
+    CustomerEmail: 'andrew@gmail.com',
+    ProjectName: 'Real Homes WP Theme',
+    Status: 'Pending',
+    CustomerImage:
+      avatar4,
+    StatusBg: '#FEC90F',
+    Weeks: '19',
+    Budget: '$24.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1019,
 
-  //   CustomerName: 'Sunil Joshi',
-  //   CustomerEmail: 'sunil@gmail.com',
-  //   ProjectName: 'Elite Admin',
-  //   Status: 'Active',
-  //   CustomerImage:
-  //     avatar3,
+    CustomerName: 'Christopher Jamil',
+    CustomerEmail: 'jamil@gmail.com',
+    ProjectName: 'MedicalPro WP Theme',
+    Status: 'Completed',
+    CustomerImage:
+      avatar,
+    StatusBg: '#8BE78B',
+    Weeks: '34',
+    Budget: '$16.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1020,
 
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '11',
-  //   Budget: '$3.9k',
-  //   Location: 'India',
-  // },
-  // {
-  //   CustomerID: 1018,
+    CustomerName: 'Michael',
+    CustomerEmail: 'michael@gmail.com',
+    ProjectName: 'Weekly WP Theme',
+    Status: 'Cancel',
+    CustomerImage:
+      avatar2,
+    StatusBg: 'red',
+    Weeks: '34',
+    Budget: '$16.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1021,
+    CustomerName: 'Nirav Joshi',
+    CustomerEmail: 'nirav@gmail.com',
+    CustomerImage:
+      avatar2,
+    ProjectName: 'Hosting Press HTML',
+    Status: 'Active',
+    StatusBg: '#8BE78B',
+    Weeks: '40',
+    Budget: '$2.4k',
+    Location: 'India',
+  },
+  {
+    CustomerID: 1022,
 
-  //   CustomerName: 'Andrew McDownland',
-  //   CustomerEmail: 'andrew@gmail.com',
-  //   ProjectName: 'Real Homes WP Theme',
-  //   Status: 'Pending',
-  //   CustomerImage:
-  //     avatar4,
-  //   StatusBg: '#FEC90F',
-  //   Weeks: '19',
-  //   Budget: '$24.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1019,
+    CustomerName: 'Sunil Joshi',
+    CustomerEmail: 'sunil@gmail.com',
+    ProjectName: 'Elite Admin',
+    Status: 'Active',
+    CustomerImage:
+      avatar3,
 
-  //   CustomerName: 'Christopher Jamil',
-  //   CustomerEmail: 'jamil@gmail.com',
-  //   ProjectName: 'MedicalPro WP Theme',
-  //   Status: 'Completed',
-  //   CustomerImage:
-  //     avatar,
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '34',
-  //   Budget: '$16.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1020,
+    StatusBg: '#8BE78B',
+    Weeks: '11',
+    Budget: '$3.9k',
+    Location: 'India',
+  },
+  {
+    CustomerID: 1023,
 
-  //   CustomerName: 'Michael',
-  //   CustomerEmail: 'michael@gmail.com',
-  //   ProjectName: 'Weekly WP Theme',
-  //   Status: 'Cancel',
-  //   CustomerImage:
-  //     avatar2,
-  //   StatusBg: 'red',
-  //   Weeks: '34',
-  //   Budget: '$16.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1021,
-  //   CustomerName: 'Nirav Joshi',
-  //   CustomerEmail: 'nirav@gmail.com',
-  //   CustomerImage:
-  //     avatar2,
-  //   ProjectName: 'Hosting Press HTML',
-  //   Status: 'Active',
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '40',
-  //   Budget: '$2.4k',
-  //   Location: 'India',
-  // },
-  // {
-  //   CustomerID: 1022,
+    CustomerName: 'Andrew McDownland',
+    CustomerEmail: 'andrew@gmail.com',
+    ProjectName: 'Real Homes WP Theme',
+    Status: 'Pending',
+    CustomerImage:
+      avatar4,
+    StatusBg: '#FEC90F',
+    Weeks: '19',
+    Budget: '$24.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1024,
 
-  //   CustomerName: 'Sunil Joshi',
-  //   CustomerEmail: 'sunil@gmail.com',
-  //   ProjectName: 'Elite Admin',
-  //   Status: 'Active',
-  //   CustomerImage:
-  //     avatar3,
+    CustomerName: 'Christopher Jamil',
+    CustomerEmail: 'jamil@gmail.com',
+    ProjectName: 'MedicalPro WP Theme',
+    Status: 'Completed',
+    CustomerImage:
+      avatar,
+    StatusBg: '#8BE78B',
+    Weeks: '34',
+    Budget: '$16.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1025,
 
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '11',
-  //   Budget: '$3.9k',
-  //   Location: 'India',
-  // },
-  // {
-  //   CustomerID: 1023,
+    CustomerName: 'Michael',
+    CustomerEmail: 'michael@gmail.com',
+    ProjectName: 'Weekly WP Theme',
+    Status: 'Cancel',
+    CustomerImage:
+      avatar2,
+    StatusBg: 'red',
+    Weeks: '34',
+    Budget: '$16.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1026,
+    CustomerName: 'Nirav Joshi',
+    CustomerEmail: 'nirav@gmail.com',
+    CustomerImage:
+      avatar2,
+    ProjectName: 'Hosting Press HTML',
+    Status: 'Active',
+    StatusBg: '#8BE78B',
+    Weeks: '40',
+    Budget: '$2.4k',
+    Location: 'India',
+  },
+  {
+    CustomerID: 1027,
 
-  //   CustomerName: 'Andrew McDownland',
-  //   CustomerEmail: 'andrew@gmail.com',
-  //   ProjectName: 'Real Homes WP Theme',
-  //   Status: 'Pending',
-  //   CustomerImage:
-  //     avatar4,
-  //   StatusBg: '#FEC90F',
-  //   Weeks: '19',
-  //   Budget: '$24.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1024,
+    CustomerName: 'Sunil Joshi',
+    CustomerEmail: 'sunil@gmail.com',
+    ProjectName: 'Elite Admin',
+    Status: 'Active',
+    CustomerImage:
+      avatar3,
 
-  //   CustomerName: 'Christopher Jamil',
-  //   CustomerEmail: 'jamil@gmail.com',
-  //   ProjectName: 'MedicalPro WP Theme',
-  //   Status: 'Completed',
-  //   CustomerImage:
-  //     avatar,
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '34',
-  //   Budget: '$16.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1025,
+    StatusBg: '#8BE78B',
+    Weeks: '11',
+    Budget: '$3.9k',
+    Location: 'India',
+  },
+  {
+    CustomerID: 1028,
 
-  //   CustomerName: 'Michael',
-  //   CustomerEmail: 'michael@gmail.com',
-  //   ProjectName: 'Weekly WP Theme',
-  //   Status: 'Cancel',
-  //   CustomerImage:
-  //     avatar2,
-  //   StatusBg: 'red',
-  //   Weeks: '34',
-  //   Budget: '$16.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1026,
-  //   CustomerName: 'Nirav Joshi',
-  //   CustomerEmail: 'nirav@gmail.com',
-  //   CustomerImage:
-  //     avatar2,
-  //   ProjectName: 'Hosting Press HTML',
-  //   Status: 'Active',
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '40',
-  //   Budget: '$2.4k',
-  //   Location: 'India',
-  // },
-  // {
-  //   CustomerID: 1027,
+    CustomerName: 'Andrew McDownland',
+    CustomerEmail: 'andrew@gmail.com',
+    ProjectName: 'Real Homes WP Theme',
+    Status: 'Pending',
+    CustomerImage:
+      avatar4,
+    StatusBg: '#FEC90F',
+    Weeks: '19',
+    Budget: '$24.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1029,
 
-  //   CustomerName: 'Sunil Joshi',
-  //   CustomerEmail: 'sunil@gmail.com',
-  //   ProjectName: 'Elite Admin',
-  //   Status: 'Active',
-  //   CustomerImage:
-  //     avatar3,
+    CustomerName: 'Christopher Jamil',
+    CustomerEmail: 'jamil@gmail.com',
+    ProjectName: 'MedicalPro WP Theme',
+    Status: 'Completed',
+    CustomerImage:
+      avatar,
+    StatusBg: '#8BE78B',
+    Weeks: '34',
+    Budget: '$16.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1030,
 
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '11',
-  //   Budget: '$3.9k',
-  //   Location: 'India',
-  // },
-  // {
-  //   CustomerID: 1028,
+    CustomerName: 'Michael',
+    CustomerEmail: 'michael@gmail.com',
+    ProjectName: 'Weekly WP Theme',
+    Status: 'Cancel',
+    CustomerImage:
+      avatar2,
+    StatusBg: 'red',
+    Weeks: '34',
+    Budget: '$16.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1031,
+    CustomerName: 'Nirav Joshi',
+    CustomerEmail: 'nirav@gmail.com',
+    CustomerImage:
+      avatar2,
+    ProjectName: 'Hosting Press HTML',
+    Status: 'Active',
+    StatusBg: '#8BE78B',
+    Weeks: '40',
+    Budget: '$2.4k',
+    Location: 'India',
+  },
+  {
+    CustomerID: 1032,
 
-  //   CustomerName: 'Andrew McDownland',
-  //   CustomerEmail: 'andrew@gmail.com',
-  //   ProjectName: 'Real Homes WP Theme',
-  //   Status: 'Pending',
-  //   CustomerImage:
-  //     avatar4,
-  //   StatusBg: '#FEC90F',
-  //   Weeks: '19',
-  //   Budget: '$24.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1029,
+    CustomerName: 'Sunil Joshi',
+    CustomerEmail: 'sunil@gmail.com',
+    ProjectName: 'Elite Admin',
+    Status: 'Active',
+    CustomerImage:
+      avatar3,
 
-  //   CustomerName: 'Christopher Jamil',
-  //   CustomerEmail: 'jamil@gmail.com',
-  //   ProjectName: 'MedicalPro WP Theme',
-  //   Status: 'Completed',
-  //   CustomerImage:
-  //     avatar,
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '34',
-  //   Budget: '$16.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1030,
+    StatusBg: '#8BE78B',
+    Weeks: '11',
+    Budget: '$3.9k',
+    Location: 'India',
+  },
+  {
+    CustomerID: 1033,
 
-  //   CustomerName: 'Michael',
-  //   CustomerEmail: 'michael@gmail.com',
-  //   ProjectName: 'Weekly WP Theme',
-  //   Status: 'Cancel',
-  //   CustomerImage:
-  //     avatar2,
-  //   StatusBg: 'red',
-  //   Weeks: '34',
-  //   Budget: '$16.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1031,
-  //   CustomerName: 'Nirav Joshi',
-  //   CustomerEmail: 'nirav@gmail.com',
-  //   CustomerImage:
-  //     avatar2,
-  //   ProjectName: 'Hosting Press HTML',
-  //   Status: 'Active',
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '40',
-  //   Budget: '$2.4k',
-  //   Location: 'India',
-  // },
-  // {
-  //   CustomerID: 1032,
+    CustomerName: 'Andrew McDownland',
+    CustomerEmail: 'andrew@gmail.com',
+    ProjectName: 'Real Homes WP Theme',
+    Status: 'Pending',
+    CustomerImage:
+      avatar4,
+    StatusBg: '#FEC90F',
+    Weeks: '19',
+    Budget: '$24.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1034,
 
-  //   CustomerName: 'Sunil Joshi',
-  //   CustomerEmail: 'sunil@gmail.com',
-  //   ProjectName: 'Elite Admin',
-  //   Status: 'Active',
-  //   CustomerImage:
-  //     avatar3,
+    CustomerName: 'Christopher Jamil',
+    CustomerEmail: 'jamil@gmail.com',
+    ProjectName: 'MedicalPro WP Theme',
+    Status: 'Completed',
+    CustomerImage:
+      avatar,
+    StatusBg: '#8BE78B',
+    Weeks: '34',
+    Budget: '$16.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1035,
 
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '11',
-  //   Budget: '$3.9k',
-  //   Location: 'India',
-  // },
-  // {
-  //   CustomerID: 1033,
+    CustomerName: 'Michael',
+    CustomerEmail: 'michael@gmail.com',
+    ProjectName: 'Weekly WP Theme',
+    Status: 'Cancel',
+    CustomerImage:
+      avatar2,
+    StatusBg: 'red',
+    Weeks: '34',
+    Budget: '$16.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1036,
+    CustomerName: 'Nirav Joshi',
+    CustomerEmail: 'nirav@gmail.com',
+    CustomerImage:
+      avatar2,
+    ProjectName: 'Hosting Press HTML',
+    Status: 'Active',
+    StatusBg: '#8BE78B',
+    Weeks: '40',
+    Budget: '$2.4k',
+    Location: 'India',
+  },
+  {
+    CustomerID: 1037,
 
-  //   CustomerName: 'Andrew McDownland',
-  //   CustomerEmail: 'andrew@gmail.com',
-  //   ProjectName: 'Real Homes WP Theme',
-  //   Status: 'Pending',
-  //   CustomerImage:
-  //     avatar4,
-  //   StatusBg: '#FEC90F',
-  //   Weeks: '19',
-  //   Budget: '$24.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1034,
+    CustomerName: 'Sunil Joshi',
+    CustomerEmail: 'sunil@gmail.com',
+    ProjectName: 'Elite Admin',
+    Status: 'Active',
+    CustomerImage:
+      avatar3,
 
-  //   CustomerName: 'Christopher Jamil',
-  //   CustomerEmail: 'jamil@gmail.com',
-  //   ProjectName: 'MedicalPro WP Theme',
-  //   Status: 'Completed',
-  //   CustomerImage:
-  //     avatar,
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '34',
-  //   Budget: '$16.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1035,
+    StatusBg: '#8BE78B',
+    Weeks: '11',
+    Budget: '$3.9k',
+    Location: 'India',
+  },
+  {
+    CustomerID: 1038,
 
-  //   CustomerName: 'Michael',
-  //   CustomerEmail: 'michael@gmail.com',
-  //   ProjectName: 'Weekly WP Theme',
-  //   Status: 'Cancel',
-  //   CustomerImage:
-  //     avatar2,
-  //   StatusBg: 'red',
-  //   Weeks: '34',
-  //   Budget: '$16.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1036,
-  //   CustomerName: 'Nirav Joshi',
-  //   CustomerEmail: 'nirav@gmail.com',
-  //   CustomerImage:
-  //     avatar2,
-  //   ProjectName: 'Hosting Press HTML',
-  //   Status: 'Active',
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '40',
-  //   Budget: '$2.4k',
-  //   Location: 'India',
-  // },
-  // {
-  //   CustomerID: 1037,
-
-  //   CustomerName: 'Sunil Joshi',
-  //   CustomerEmail: 'sunil@gmail.com',
-  //   ProjectName: 'Elite Admin',
-  //   Status: 'Active',
-  //   CustomerImage:
-  //     avatar3,
-
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '11',
-  //   Budget: '$3.9k',
-  //   Location: 'India',
-  // },
-  // {
-  //   CustomerID: 1038,
-
-  //   CustomerName: 'Andrew McDownland',
-  //   CustomerEmail: 'andrew@gmail.com',
-  //   ProjectName: 'Real Homes WP Theme',
-  //   Status: 'Pending',
-  //   CustomerImage:
-  //     avatar4,
-  //   StatusBg: '#FEC90F',
-  //   Weeks: '19',
-  //   Budget: '$24.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1039,
-  //   CustomerName: 'Christopher Jamil',
-  //   CustomerEmail: 'jamil@gmail.com',
-  //   ProjectName: 'MedicalPro WP Theme',
-  //   Status: 'Completed',
-  //   CustomerImage:
-  //     avatar,
-  //   StatusBg: '#8BE78B',
-  //   Weeks: '34',
-  //   Budget: '$16.5k',
-  //   Location: 'USA',
-  // },
-  // {
-  //   CustomerID: 1040,
-  //   CustomerName: 'Michael',
-  //   CustomerEmail: 'michael@gmail.com',
-  //   ProjectName: 'Weekly WP Theme',
-  //   Status: 'Cancel',
-  //   CustomerImage:
-  //     avatar2,
-  //   StatusBg: 'red',
-  //   Weeks: '34',
-  //   Budget: '$16.5k',
-  //   Location: 'USA',
-  // },
+    CustomerName: 'Andrew McDownland',
+    CustomerEmail: 'andrew@gmail.com',
+    ProjectName: 'Real Homes WP Theme',
+    Status: 'Pending',
+    CustomerImage:
+      avatar4,
+    StatusBg: '#FEC90F',
+    Weeks: '19',
+    Budget: '$24.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1039,
+    CustomerName: 'Christopher Jamil',
+    CustomerEmail: 'jamil@gmail.com',
+    ProjectName: 'MedicalPro WP Theme',
+    Status: 'Completed',
+    CustomerImage:
+      avatar,
+    StatusBg: '#8BE78B',
+    Weeks: '34',
+    Budget: '$16.5k',
+    Location: 'USA',
+  },
+  {
+    CustomerID: 1040,
+    CustomerName: 'Michael',
+    CustomerEmail: 'michael@gmail.com',
+    ProjectName: 'Weekly WP Theme',
+    Status: 'Cancel',
+    CustomerImage:
+      avatar2,
+    StatusBg: 'red',
+    Weeks: '34',
+    Budget: '$16.5k',
+    Location: 'USA',
+  },
 
 ];
 
@@ -1021,7 +874,7 @@ export const doctorsData = [
     Country: 'India',
     ContactNumber: '9532748263',
     DoctorImage:
-      avatar2,
+    avatar2,
   },
   {
     DoctorID: 2,
@@ -1030,7 +883,7 @@ export const doctorsData = [
     Country: 'UAE',
     ContactNumber: '8832228263',
     DoctorImage:
-      avatar3,
+    avatar3,
   },
   {
     DoctorID: 3,
@@ -1039,7 +892,7 @@ export const doctorsData = [
     Country: 'USA',
     ContactNumber: '9993528263',
     DoctorImage:
-      avatar,
+    avatar,
   },
   {
     DoctorID: 4,
@@ -1048,7 +901,7 @@ export const doctorsData = [
     Country: 'UK',
     ContactNumber: '2736488263',
     DoctorImage:
-      avatar2,
+    avatar2,
   },
   {
     DoctorID: 5,
@@ -1057,7 +910,7 @@ export const doctorsData = [
     Country: 'Canada',
     ContactNumber: '9364373263',
     DoctorImage:
-      avatar2,
+    avatar2,
   },
   {
     DoctorID: 6,
@@ -1066,7 +919,7 @@ export const doctorsData = [
     Country: 'Mexico',
     ContactNumber: '9241745263',
     DoctorImage:
-      avatar4,
+    avatar4,
   },
   {
     DoctorID: 7,
@@ -1075,7 +928,7 @@ export const doctorsData = [
     Country: 'UK',
     ContactNumber: '7562472263',
     DoctorImage:
-      avatar,
+    avatar,
   },
   {
     DoctorID: 8,
@@ -1084,7 +937,7 @@ export const doctorsData = [
     Country: 'India',
     ContactNumber: '9137638263',
     DoctorImage:
-      avatar2,
+    avatar2,
 
   },
   {
@@ -1094,7 +947,7 @@ export const doctorsData = [
     Country: 'UAE',
     ContactNumber: '8832228263',
     DoctorImage:
-      avatar3,
+    avatar3,
   },
   {
     DoctorID: 10,
@@ -1103,7 +956,7 @@ export const doctorsData = [
     Country: 'UAE',
     ContactNumber: '8832228263',
     DoctorImage:
-      avatar,
+    avatar,
   },
   {
     DoctorID: 11,
@@ -1112,7 +965,7 @@ export const doctorsData = [
     Country: 'UAE',
     ContactNumber: '8832228263',
     DoctorImage:
-      avatar4,
+    avatar4,
   },
   {
     DoctorID: 12,
@@ -1121,7 +974,7 @@ export const doctorsData = [
     Country: 'UAE',
     ContactNumber: '9238643263',
     DoctorImage:
-      avatar3,
+    avatar3,
   },
   {
     EmployeeID: 4,
@@ -1151,7 +1004,7 @@ export const doctorsData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-      avatar,
+    avatar,
   },
   {
     EmployeeID: 2,
@@ -1221,7 +1074,7 @@ export const doctorsData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-      avatar2,
+    avatar2,
 
   },
   {
@@ -1292,7 +1145,7 @@ export const doctorsData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-      avatar2,
+    avatar2,
 
   },
   {
@@ -1363,7 +1216,7 @@ export const doctorsData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-      avatar2,
+    avatar2,
 
   },
   {
@@ -1434,7 +1287,7 @@ export const doctorsData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-      avatar2,
+    avatar2,
 
   },
   {
@@ -1505,7 +1358,7 @@ export const doctorsData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-      avatar2,
+    avatar2,
 
   },
   {
@@ -1576,7 +1429,7 @@ export const doctorsData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-      avatar2,
+    avatar2,
 
   },
   {
@@ -1837,30 +1690,22 @@ export const scheduleData = [
 ];
 
 export const kanbanGrid = [
-  {
-    headerText: 'To Do',
+  { headerText: 'To Do',
     keyField: 'Open',
-    allowToggle: true
-  },
+    allowToggle: true },
 
-  {
-    headerText: 'In Progress',
+  { headerText: 'In Progress',
     keyField: 'InProgress',
-    allowToggle: true
-  },
+    allowToggle: true },
 
-  {
-    headerText: 'Testing',
+  { headerText: 'Testing',
     keyField: 'Testing',
     allowToggle: true,
-    isExpanded: false
-  },
+    isExpanded: false },
 
-  {
-    headerText: 'Done',
+  { headerText: 'Done',
     keyField: 'Close',
-    allowToggle: true
-  },
+    allowToggle: true },
 ];
 
 export const kanbanData = [
@@ -2218,49 +2063,6 @@ export const kanbanData = [
 
 export const lineChartData = [
   [
-    { x: 'ADHD', y: 75 },
-    { x: 'Anxiety', y: 50 },
-    { x: 'Depression', y: 25 },
-    { x: 'Self-Esteem', y: 75 },
-    { x: 'Suicidal', y: 55 },
-  ],
-];
-
-export const lineCustomSeries = [
-  {
-    dataSource: lineChartData[0],
-    xName: 'x',
-    yName: 'y',
-    name: 'Diseases',
-    width: '2',
-    marker: { visible: true, width: 10, height: 10 },
-    type: 'Line'
-  },
-
-];
-
-export const LinePrimaryXAxis = {
-  valueType: 'Category',
-  labelFormat: 'y',
-  intervalType: 'Years',
-  edgeLabelPlacement: 'Shift',
-  majorGridLines: { width: 0 },
-  background: 'white',
-};
-
-export const LinePrimaryYAxis = {
-  labelFormat: '{value}%',
-  rangePadding: 'None',
-  minimum: 0,
-  maximum: 100,
-  interval: 20,
-  lineStyle: { width: 0 },
-  majorTickLines: { width: 0 },
-  minorTickLines: { width: 0 },
-};
-
-export const abcChartData = [
-  [
     { x: 'Jan', y: 23 },
     { x: 'Feb', y: 7 },
     { x: 'Mar', y: 42 },
@@ -2293,40 +2095,34 @@ export const abcChartData = [
   ],
 ];
 
-export const abcCustomSeries = [
-  {
-    dataSource: lineChartData[0],
+export const lineCustomSeries = [
+  { dataSource: lineChartData[0],
     xName: 'x',
     yName: 'y',
     name: 'Counselling',
     width: '2',
     marker: { visible: true, width: 10, height: 10 },
-    type: 'Line'
-  },
+    type: 'Line' },
 
-  {
-    dataSource: lineChartData[1],
+  { dataSource: lineChartData[1],
     xName: 'x',
     yName: 'y',
     name: 'Yoga',
     width: '2',
     marker: { visible: true, width: 10, height: 10 },
-    type: 'Line'
-  },
+    type: 'Line' },
 
-  {
-    dataSource: lineChartData[2],
+  { dataSource: lineChartData[2],
     xName: 'x',
     yName: 'y',
     name: 'Meditation',
     width: '2',
     marker: { visible: true, width: 10, height: 10 },
-    type: 'Line'
-  },
+    type: 'Line' },
 
 ];
 
-export const abcX = {
+export const LinePrimaryXAxis = {
   valueType: 'Category',
   labelFormat: 'y',
   intervalType: 'Years',
@@ -2335,7 +2131,7 @@ export const abcX = {
   background: 'white',
 };
 
-export const abcY = {
+export const LinePrimaryYAxis = {
   labelFormat: '{value}%',
   rangePadding: 'None',
   minimum: 0,
@@ -2434,82 +2230,64 @@ export const areaPrimaryYAxis = {
 
 export const stackedChartData = [
   [
-    { x: '1', y: 12 / 5 },
-    { x: '2', y: 54 / 5 },
-    { x: '3', y: 42 / 5 },
-    { x: '4', y: 34 / 5 },
-    { x: '5', y: 70 / 5 },
+    { x: 'Jan', y: 23 },
+    { x: 'Feb', y: 7 },
+    { x: 'Mar', y: 42 },
+    { x: 'Apr', y: 34 },
+    { x: 'May', y: 18 },
+    { x: 'Jun', y: 21 },
+    { x: 'Jul', y: 43 },
+    { x: 'Aug', y: 14 },
   ],
   [
-    { x: '1', y: 12 / 5 },
-    { x: '2', y: 54 / 5 },
-    { x: '3', y: 42 / 5 },
-    { x: '4', y: 34 / 5 },
-    { x: '5', y: 70 / 5 },
+    { x: 'Jan', y: 30 },
+    { x: 'Feb', y: 63 },
+    { x: 'Mar', y: 14 },
+    { x: 'Apr', y: 26 },
+    { x: 'May', y: 47 },
+    { x: 'Jun', y: 33 },
+    { x: 'Jul', y: 20 },
+    { x: 'Aug', y: 22 },
   ],
   [
-    { x: '1', y: 12 / 5 },
-    { x: '2', y: 54 / 5 },
-    { x: '3', y: 42 / 5 },
-    { x: '4', y: 34 / 5 },
-    { x: '5', y: 70 / 5 },
-  ],
-  [
-    { x: '1', y: 12 / 5 },
-    { x: '2', y: 54 / 5 },
-    { x: '3', y: 42 / 5 },
-    { x: '4', y: 34 / 5 },
-    { x: '5', y: 70 / 5 },
-  ],
-  [
-    { x: '1', y: 12 / 5 },
-    { x: '2', y: 54 / 5 },
-    { x: '3', y: 42 / 5 },
-    { x: '4', y: 34 / 5 },
-    { x: '5', y: 70 / 5 },
+    { x: 'Jan', y: 16 },
+    { x: 'Feb', y: 22 },
+    { x: 'Mar', y: 14 },
+    { x: 'Apr', y: 11 },
+    { x: 'May', y: 31 },
+    { x: 'Jun', y: 36 },
+    { x: 'Jul', y: 21 },
+    { x: 'Aug', y: 50 },
   ],
 ];
 
 export const stackedCustomSeries = [
-  {
-    dataSource: stackedChartData[0],
+
+  { dataSource: stackedChartData[0],
     xName: 'x',
     yName: 'y',
-    name: 'ADHD',
+    name: 'Counselling',
     type: 'StackingColumn',
     background: 'blue',
+
   },
-  {
-    dataSource: stackedChartData[1],
+
+  { dataSource: stackedChartData[1],
     xName: 'x',
     yName: 'y',
-    name: 'Anxiety',
+    name: 'Yoga',
     type: 'StackingColumn',
-    background: 'blue',
+    background: 'red',
+
   },
-  {
-    dataSource: stackedChartData[2],
+
+  { dataSource: stackedChartData[2],
     xName: 'x',
     yName: 'y',
-    name: 'Depression',
+    name: 'Meditation',
     type: 'StackingColumn',
-    background: 'blue',
-  },
-  {
-    dataSource: stackedChartData[3],
-    xName: 'x',
-    yName: 'y',
-    name: 'Self-Esteem',
-    type: 'StackingColumn',
-    background: 'blue',
-  },
-  {
-    dataSource: stackedChartData[4],
-    xName: 'x',
-    yName: 'y',
-    name: 'Suicidal',
-    type: 'StackingColumn',
-    background: 'blue',
+    background: 'green',
+
   },
 ];
 
