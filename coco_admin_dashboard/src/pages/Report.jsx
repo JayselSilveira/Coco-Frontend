@@ -23,7 +23,7 @@ function Report() {
     extreme:
       "The child displays extreme signs of this class. This is considered alarming. The child needs proper treatment to manage this class of mental health Issue ",
   };
-  return <div>report</div>;
+  return <></>;
 }
 
 export default Report;
