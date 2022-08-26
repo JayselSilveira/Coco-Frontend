@@ -8,6 +8,7 @@ import { Overview, Calendar, Doctors, Stacked, Students, Kanban, Line, Area } fr
 import './App.css';
 
 import { useStateContext } from './contexts/ContextProvider';
+import Report from './pages/Report';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
@@ -80,7 +81,7 @@ const App = () => {
                 <Route path="/line" element={<Line />} />
                 <Route path="/area" element={<Area />} />
                 <Route path="/stacked" element={<Stacked />} />
-
+                <Route path="/report" element={<Report />} />
               </Routes>
             </div>
             <Footer />
