@@ -3,8 +3,7 @@ import { GoPrimitiveDot } from 'react-icons/go';
 import { IoIosMore } from 'react-icons/io';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
-import { Stacked, Button, Analysis, LineChart } from '../components';
-import Bar  from './Charts/Bar';
+import { Stacked, Button, LineChart } from '../components';
 import { activityData, statistics, dropdownData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 
@@ -52,10 +51,7 @@ const Overview = () => {
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780  ">
           <div className="flex justify-between">
             <div className="flex items-center gap-4">
-              <span className="text-black-400 font-bold ml-1 text-40">
-                Disease Analysis
-              </span>
-              {/* <p className="flex items-center gap-2 text-teal-600 hover:drop-shadow-xl">
+              <p className="flex items-center gap-2 text-teal-600 hover:drop-shadow-xl">
                 <span>
                   <GoPrimitiveDot />
                 </span>
@@ -72,71 +68,64 @@ const Overview = () => {
                   <GoPrimitiveDot />
                 </span>
                 <span>Meditation</span>
-              </p> */}
+              </p>
             </div>
-            {/* <DropDown currentMode={currentMode} /> */}
+            <DropDown currentMode={currentMode} />
           </div>
-          <div className="mt-10 flex gap-10 flex-wrap justify-center"></div>
-          <div>
-            <LineChart currentMode={currentMode} width="700px" height="400px" />
+          <div className="mt-10 flex gap-10 flex-wrap justify-center">
+            <div>
+              <Stacked currentMode={currentMode} width="800px" height="400px" />
+            </div>
           </div>
-          <span className="text-black-400 font-bold ml-1 text-40">
-            Questionnaire Summary
-          </span>
-          <div className="mt-10 flex gap-10 flex-wrap justify-center"></div>
-          <div>
-            <Stacked currentMode={currentMode} width="700px" height="400px" />
-          </div>
-
         </div>
-        {/* <div>
+        <div>
           <div className=" rounded-2xl md:w-400 p-4 m-3">
             <div className="flex gap-10 m-4 flex-wrap justify-center">
-              <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl">
-                <div className="flex justify-between items-center gap-2">
-                  <p className="text-xl font-semibold">Statistics</p>
-                  <DropDown currentMode={currentMode} />
-                </div>
-                <div className="mt-10 w-72 md:w-400">
-                  {statistics.map((item) => (
-                    <div key={item.title} className="flex justify-between mt-4">
-                      <div className="flex gap-4">
-                        <button
-                          type="button"
-                          style={{
-                            color: item.iconColor,
-                            backgroundColor: item.iconBg,
-                          }}
-                          className="text-2xl rounded-lg p-4 hover:drop-shadow-xl"
-                        >
-                          {item.icon}
-                        </button>
-                        <div>
-                          <p className="text-md font-semibold">{item.title}</p>
-                          <p className="text-sm text-gray-400">{item.desc}</p>
-                        </div>
-                      </div>
-                      <p className={`text-${item.pcColor}`}>{item.amount}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex justify-between items-center mt-5 border-t-1 border-color">
-                  <div className="mt-3">
-                    <Button
-                      color="white"
-                      bgColor={currentColor}
-                      text="+ Add"
-                      borderRadius="10px"
-                    />
+            <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl">
+          <div className="flex justify-between items-center gap-2">
+            <p className="text-xl font-semibold">Statistics</p>
+            <DropDown currentMode={currentMode} />
+          </div>
+          <div className="mt-10 w-72 md:w-400">
+            {statistics.map((item) => (
+              <div key={item.title} className="flex justify-between mt-4">
+                <div className="flex gap-4">
+                  <button
+                    type="button"
+                    style={{
+                      color: item.iconColor,
+                      backgroundColor: item.iconBg,
+                    }}
+                    className="text-2xl rounded-lg p-4 hover:drop-shadow-xl"
+                  >
+                    {item.icon}
+                  </button>
+                  <div>
+                    <p className="text-md font-semibold">{item.title}</p>
+                    <p className="text-sm text-gray-400">{item.desc}</p>
                   </div>
                 </div>
+                <p className={`text-${item.pcColor}`}>{item.amount}</p>
               </div>
+            ))}
+          </div>
+          <div className="flex justify-between items-center mt-5 border-t-1 border-color">
+            <div className="mt-3">
+              <Button
+                color="white"
+                bgColor={currentColor}
+                text="+ Add"
+                borderRadius="10px"
+              />
             </div>
           </div>
-        </div> */}
+        </div>
+      </div>
+          </div>
+        </div>
       </div>
 
-      {/* <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center">
         <div className="w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
           <div className="flex justify-between">
             <p className="text-xl font-semibold">Daily Activities</p>
@@ -163,10 +152,8 @@ const Overview = () => {
             </div>
           </div>
         </div>
-      </div> */}
-      {/* <Bar/> */}
+      </div>
     </div>
-
   );
 };
 
