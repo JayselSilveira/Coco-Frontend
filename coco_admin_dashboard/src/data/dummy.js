@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineCalendar, AiOutlineAreaChart, AiOutlineBarChart, AiOutlineStock } from 'react-icons/ai';
 import { FiShoppingBag, FiBarChart, FiCreditCard } from 'react-icons/fi';
 import { BsKanban, BsBoxSeam, BsCurrencyDollar, BsShield } from 'react-icons/bs';
@@ -412,11 +412,7 @@ const gridDoctorCountry = (props) => (
 
 const studentGridImage = (props) => (
   <div className="flex items-center gap-2">
-    <img
-      className="rounded-full w-10 h-10"
-      src={props.StudentImage}
-      alt="student"
-    />
+
     <div>
       <NavLink to="/overview"><p>{props.StudentName}</p></NavLink>
     </div>
@@ -506,19 +502,19 @@ export const studentsData = [
     StudentName: 'Jaysel Silveira',
     RollNo: 'jaysel@gmail.com',
     Class: 'sa',
-    School:'sas' ,
+    School: 'sas',
     DateRegistered: '10/15/2020',
     URL: '/overview'
   },
 
-  
-//   {customersData?.map(({ id, data }) => (
-//     <tr key={id}>
-//       <td>{data.name}</td>
-//       <td>{data.password}</td>
-//     </tr>
-//   ))}
-// </table> */}
+
+  //   {customersData?.map(({ id, data }) => (
+  //     <tr key={id}>
+  //       <td>{data.name}</td>
+  //       <td>{data.password}</td>
+  //     </tr>
+  //   ))}
+  // </table> */}
 
 
   // {

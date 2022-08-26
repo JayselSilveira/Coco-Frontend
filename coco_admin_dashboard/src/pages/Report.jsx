@@ -16,7 +16,7 @@ function Report() {
       console.log(response);
     });
   }, []);
-  return <div></div>;
+  return <div>report</div>;
 }
 
 export default Report;
