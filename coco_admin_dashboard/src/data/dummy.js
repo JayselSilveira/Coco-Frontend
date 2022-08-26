@@ -13,7 +13,7 @@ import avatar2 from './avatar2.jpg';
 import avatar3 from './avatar3.png';
 import avatar4 from './avatar4.jpg';
 import { NavLink } from 'react-router-dom';
-import db from './firebase';
+import db from '../firebase';
 const Dummy = () => {
   // const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
   const [usersData, setUsersData] = useState([]);
