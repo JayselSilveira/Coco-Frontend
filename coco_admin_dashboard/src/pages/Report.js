@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from "react";
 
 function Report() {
+
+
   useEffect(() => {
-    fetch("https://coco-sih-api-2.herokuapp.com/", {
+
+    fetch("http://0.0.0.0:8000/").then((Response) => {
+      return Response.json()
+    }).then((data) => {
+      console.log(data);
+    })
+
+    fetch("https://coco-sih-api-2.herokuapp.com", {
       method: "POST",
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
       body: JSON.stringify({
-        u_id: "qnp4TAZYyDZgpCtZHTnoOVM12NT2",
+        "u_id": "qnp4TAZYyDZgpCtZHTnoOVM12NT2",
       }),
     })
       .then((res) => res.json())
@@ -23,7 +32,7 @@ function Report() {
     extreme:
       "The child displays extreme signs of this class. This is considered alarming. The child needs proper treatment to manage this class of mental health Issue ",
   };
-  return <></>;
+  return <>{summary_text.all}</>;
 }
 
 export default Report;
